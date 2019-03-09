@@ -1,0 +1,18 @@
+h1, h3 {
+    font-family: 'Amatic SC', cursive;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+.container {
+    margin-top: 10px;
+}
+
+.custom-container {
+    display: flex;
+    flex-direction: column;
+}
+
+th {
+    font-family: 'Roboto', sans-serif;
