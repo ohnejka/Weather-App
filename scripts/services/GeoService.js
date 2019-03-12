@@ -1,11 +1,11 @@
 import HttpService from './HttpService.js';
 
 
-let getGeoURL = (position) => `https://api.openweathermap.org/data/2.5/weather?q=lat=${position.lat}&lon=${position.long}&units=metric&APPID=149d813cabaeb3cfcd6486884584277f`;
+let getGeoURL = (lat, long) => `https://api.openweathermap.org/data/2.5/weather?q=lat=${lat}&lon=${long}&units=metric&APPID=149d813cabaeb3cfcd6486884584277f`;
 
 let GeoService = {
     
-    async getGeoWeather(position) {
+async getGeoWeather(position) {
         let requiredGeoURL = getGeoURL(position);
         console.log(requiredGeoURL);
         
@@ -23,7 +23,11 @@ let GeoService = {
         console.dir('geo data error', error);
     }
 }
+
+
 };
+
+
 
 
 export default GeoService;

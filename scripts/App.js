@@ -11,6 +11,14 @@ export default class App {
         this._render();
         
         this._initCitySearch();
+
+        this._el.addEventListener('userCoordsReceived', e => {
+            this._currPosition = e.detail;
+            console.log(this._currPosition[0]);
+            // приходит пустой массив
+            console.log('received coordinates in App', this._currPosition);
+        })
+
         this._initGeolocation ();
 
         
@@ -23,18 +31,15 @@ _initGeolocation () {
         element: this._el.querySelector('[data-element="geolocation-weather"]')
     })
 
+
     this._requestGeoLocation();
 }
 
-_requestGeoLocation () {
-    console.log('here1') //сюда доходит
-    this._geolocation.on('userCoordsReceived', async e => {
-       console.log('here2'); //а сюда нет, хотя событие задиспатчено было.
-        let geoResponse = await GeoService.getGeoWeather(e.detail);
-        console.log('geoservice response', geoResponse);
-    })
-
+async _requestGeoLocation () {
+    let geoResponse = await GeoService.getGeoWeather(this._currPosition.lat, this._currPosition.long);
+    console.log('geoservice response', geoResponse);
 }
+
 
 async _initCitySearch() {
   

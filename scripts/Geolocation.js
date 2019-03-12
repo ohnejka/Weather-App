@@ -21,25 +21,27 @@ _checkGeolocation () {
     }
 }
 
- _getCoordinates() {
+// как заставить функцию ниже не отправлять событие до того, как придут координаты?
 
-    let userPosition = {};
-    navigator.geolocation.getCurrentPosition(showCoordinates);
-    console.log('user geolocation', userPosition);
-
-    let gotCoordinatesEvent = new CustomEvent('userCoordsReceived', {detail: userPosition});
-    this._el.dispatchEvent(gotCoordinatesEvent);
-    console.log(gotCoordinatesEvent);
-    
-
+ async _getCoordinates() {
    
-    function showCoordinates(position) {
+    let userPosition = [];
+    await navigator.geolocation.getCurrentPosition(provideCoordinates);
     
-        userPosition.lat = position.coords.latitude.toFixed()
-        userPosition.long = position.coords.longitude.toFixed();
-    };
-}
 
+    function provideCoordinates(position) {
+    
+        userPosition[0] = position.coords.latitude.toFixed()
+        userPosition[1] = position.coords.longitude.toFixed();
+        console.log(userPosition);
+    };
+
+    let gotCoordinatesEvent = new CustomEvent('userCoordsReceived', {
+        detail: userPosition,
+        bubbles: true}
+    );
+    await this._el.dispatchEvent(gotCoordinatesEvent);
+}
 
 }
 
