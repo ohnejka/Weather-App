@@ -1,7 +1,8 @@
 import TableCurrent from './TableCurrent.js';
-import Table_3days from './Table3Days.js';
 import CitySearch from './CitySearch.js';
 import DataService from './services/DataService.js';
+import Geolocation from './Geolocation.js';
+import GeoService from './services/GeoService.js';
 
 export default class App {
 
@@ -10,11 +11,30 @@ export default class App {
         this._render();
         
         this._initCitySearch();
+        this._initGeolocation ();
+
+        
 
     }
 
 
+_initGeolocation () {
+    this._geolocation = new Geolocation ({
+        element: this._el.querySelector('[data-element="geolocation-weather"]')
+    })
 
+    this._requestGeoLocation();
+}
+
+_requestGeoLocation () {
+    console.log('here1') //сюда доходит
+    this._geolocation.on('userCoordsReceived', async e => {
+       console.log('here2'); //а сюда нет, хотя событие задиспатчено было.
+        let geoResponse = await GeoService.getGeoWeather(e.detail);
+        console.log('geoservice response', geoResponse);
+    })
+
+}
 
 async _initCitySearch() {
   
@@ -54,7 +74,11 @@ _render() {
     <div class="row" data-element="city-search"></div>
 
     <div class="row current-weather col-4" data-element="current-table">
-    </div>    
+    </div>
+    
+    <div class="row geolocation-weather col-4" data-element="geolocation-weather">
+    </div>
+    
     `
 }
 }
