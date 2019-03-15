@@ -1,18 +1,51 @@
-h1, h3 {
-    font-family: 'Amatic SC', cursive;
+body, html {
+    background-color: lightsteelblue;
+    height: 100%;
+  }
+
+body {
+    font-family:'Open Sans', sans-serif;
 }
+
+h1 {
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 20px;
+    background-color: white;
+    
+}
+
+.highlight {
+    font-weight: 400;
+}
+
 
 h3 {
     margin-bottom: 20px;
+    background-color: white;
 }
+
 .container {
     margin-top: 10px;
 }
 
-.custom-container {
-    display: flex;
-    flex-direction: column;
+td {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
 }
 
-th {
-    font-family: 'Roboto', sans-serif;
+
+.parallax {
+    
+    background-image: url("./img/bg-sky.jpg");
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}

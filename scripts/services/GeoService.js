@@ -1,7 +1,7 @@
 import HttpService from './HttpService.js';
 
 
-let getGeoURL = (lat, long) => `https://api.openweathermap.org/data/2.5/weather?q=lat=${lat}&lon=${long}&units=metric&APPID=149d813cabaeb3cfcd6486884584277f`;
+let getGeoURL = (coordinates) => `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[0]}&lon=${coordinates[1]}&units=metric&APPID=149d813cabaeb3cfcd6486884584277f`;
 
 let GeoService = {
     
@@ -26,7 +26,6 @@ async getGeoWeather(position) {
 
 
 };
-
 
 
 

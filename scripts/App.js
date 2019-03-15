@@ -13,15 +13,12 @@ export default class App {
         this._initCitySearch();
 
         this._el.addEventListener('userCoordsReceived', e => {
-            this._currPosition = e.detail;
-            console.log(this._currPosition[0]);
-            // приходит пустой массив
-            console.log('received coordinates in App', this._currPosition);
+            
+            this._requestGeoLocation(e.detail);
+            console.log(e.detail);
         })
 
         this._initGeolocation ();
-
-        
 
     }
 
@@ -29,15 +26,13 @@ export default class App {
 _initGeolocation () {
     this._geolocation = new Geolocation ({
         element: this._el.querySelector('[data-element="geolocation-weather"]')
-    })
-
-
-    this._requestGeoLocation();
+    });  
 }
 
-async _requestGeoLocation () {
-    let geoResponse = await GeoService.getGeoWeather(this._currPosition.lat, this._currPosition.long);
+async _requestGeoLocation (coordinates) {
+    let geoResponse = await GeoService.getGeoWeather(coordinates);
     console.log('geoservice response', geoResponse);
+    this._geolocation.renderGeolocationWeather(geoResponse);
 }
 
 
@@ -65,23 +60,21 @@ async _initCitySearch() {
 }
 
 
-
 _render() {
     
     this._el.innerHTML = `
     
     <div class="row">
-        <div class="col-9">
-            <h1 class="display-4">What's the weather in your city?</h1>
+        <div class="col-md-7">
+            <h1 class="display-3">What's the weather like today?</h1>
         </div>
     </div>
 
-    <div class="row" data-element="city-search"></div>
+    <div class="row" data-element="city-search"> </div>
 
-    <div class="row current-weather col-4" data-element="current-table">
-    </div>
+    <div class="row current-weather col-md-6" data-element="current-table"> </div>
     
-    <div class="row geolocation-weather col-4" data-element="geolocation-weather">
+    <div class="row geolocation-weather col-md-6" data-element="geolocation-weather">
     </div>
     
     `
