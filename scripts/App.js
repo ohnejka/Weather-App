@@ -20,6 +20,8 @@ export default class App {
 
         this._initGeolocation ();
 
+        
+
     }
 
 
@@ -66,7 +68,7 @@ _render() {
     
     <div class="row">
         <div class="col-md-7">
-            <h1 class="display-3">What's the weather like today?</h1>
+            <h1 class="display-3">What's the weather today?</h1>
         </div>
     </div>
 
