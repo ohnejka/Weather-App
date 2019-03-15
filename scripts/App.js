@@ -51,20 +51,15 @@ export default class App {
 
   _render() {
     this._el.innerHTML = `
-
-<div class="row">
-<div class="col-md-7">
-<h1 class="display-3">What's the weather today?<</h1>
-</div>
-</div>
-
-<div class="row" data-element="city-search"> </div>
-
-<div class="row current-weather col-md-6" data-element="current-table"> </div>
-
-<div class="row geolocation-weather col-md-6" data-element="geolocation-weather">
-</div>
-
-`;
+          <div class="row">
+            <div class="col-md-7">
+              <h1 class="display-4">What's the weather today?</h1>
+            </div>
+          </div>
+          <div class="row" data-element="city-search"> </div>
+          <div class="row current-weather col-md-6" data-element="current-table"> </div>
+          <div class="row geolocation-weather col-md-6" data-element="geolocation-weather">
+          </div>
+          `;
   }
 }
