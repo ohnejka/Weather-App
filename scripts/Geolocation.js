@@ -75,7 +75,8 @@ renderGeolocationWeather(data) {
 
                 </tbody>
             </table>
-    `
+    `;
+
 }
 
 }
