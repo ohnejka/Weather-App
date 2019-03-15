@@ -26,7 +26,7 @@ export default class CitySearch {
         this._el.innerHTML = `
         <div class="col-sm-4 input-container">
             <div class="input-group mb-3">
-                <input type="text" id="city-input" class="form-control" placeholder="Search any city..." aria-label="Type in the city" aria-describedby="basic-addon1">
+                <input type="text" id="city-input" class="form-control rounded-0" placeholder="Search any city..." aria-label="Type in the city" aria-describedby="basic-addon1">
             </div>
         </div>
         `
