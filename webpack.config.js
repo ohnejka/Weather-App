@@ -1,5 +1,6 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './scripts/index.js',
@@ -29,6 +30,10 @@ module.exports = {
   },
 
   plugins: [
-    new UglifyJsPlugin()
+    new UglifyJsPlugin(),
+    new CopyWebpackPlugin([
+      {from: './index.html'},
+      {from: './style.css'}
+    ])
   ]
 };
