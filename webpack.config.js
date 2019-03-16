@@ -8,6 +8,9 @@ module.exports = {
   },
   devtool: 'source-map',
   watch: true,
+  devServer: {
+      contentBase: './public'
+       },
   module: {
     rules: [
       {
